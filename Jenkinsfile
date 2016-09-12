@@ -2,7 +2,7 @@ node {
     def gradleHome
     stage('Preparation') { // for display purposes
         echo "Preparing pipeline..."
-        git (url)
+        git url: 'https://github.com/jkrizanic/rest-with-spring.git'
 
 
         gradleHome = tool 'Gradle 2.9' //tool name must match in the Global Tool Configuration
