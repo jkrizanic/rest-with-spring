@@ -2,7 +2,7 @@ node {
     def gradleHome
     stage('Preparation') { // for display purposes
         echo "Preparing pipeline..."
-        git 'https://github.com/jkrizanic/rest-with-spring.git'
+        git (url)
 
 
         gradleHome = tool 'Gradle 2.9' //tool name must match in the Global Tool Configuration
@@ -15,10 +15,12 @@ node {
         } else {
             bat(/"${gradleHome}\bin\gradle" clean build /)
         }
+
+
     }
+
     stage('Results') {
         junit '**/build/test-results/TEST*.xml'
         archive 'build/libs/*.jar'
-
     }
 }
